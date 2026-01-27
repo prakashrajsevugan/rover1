@@ -1,0 +1,216 @@
+/* Rover Status Section */
+.status-section {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.status-header,
+.metrics-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.active-rover-badge {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.rover-badge-icon {
+  font-size: 1.2rem;
+}
+
+.rover-badge-text {
+  letter-spacing: 0.5px;
+}
+
+.status-header h2,
+.metrics-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  margin: 0;
+}
+
+.status-icon,
+.metrics-icon {
+  font-size: 1.75rem;
+}
+
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.status-card {
+  background: #f8fafc;
+  border-left: 4px solid #3b82f6;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.status-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.5px;
+}
+
+.status-time {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin: 0.5rem 0;
+  letter-spacing: 2px;
+}
+
+.status-format {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 0.5rem 0 0 0;
+}
+
+.reset-button-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn-reset {
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.btn-reset:active {
+  transform: translateY(0);
+}
+
+/* Cleaning Metrics Section */
+.metrics-section {
+  max-width: 1400px;
+  margin: 2rem auto 2rem;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.metrics-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.metric-card {
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.debris-card {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+}
+
+.battery-card {
+  background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+}
+
+.area-card {
+  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+  border: 3px solid #0ea5e9;
+}
+
+.metric-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 0.75rem 0;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0ea5e9;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.metric-badge {
+  display: inline-block;
+  padding: 0.375rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.metric-badge.ready {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.metric-badge.good {
+  background: #86efac;
+  color: #166534;
+}
+
+.metric-badge.standby {
+  background: #d1d5db;
+  color: #374151;
+}
+
+@media (max-width: 1024px) {
+  .status-cards,
+  .metrics-cards {
+    grid-template-columns: 1fr;
+  }
+}
