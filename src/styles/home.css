@@ -4,34 +4,59 @@
   margin: 3rem auto 0;
   background: white;
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .status-section {
+    padding: 2rem;
+  }
 }
 
 .status-header,
 .metrics-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 
+@media (min-width: 768px) {
+  .status-header,
+  .metrics-header {
+    flex-direction: row;
+    margin-bottom: 2rem;
+  }
+}
+
 .active-rover-badge {
-  position: absolute;
-  right: 0;
+  position: relative;
+  right: auto;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 100%);
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
-  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  animation: slideIn 0.3s ease-out, pulse 2s ease-in-out infinite;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .active-rover-badge {
+    position: absolute;
+    right: 0;
+    font-size: 0.875rem;
+    margin-top: 0;
+  }
 }
 
 @keyframes slideIn {
@@ -55,29 +80,58 @@
 
 .status-header h2,
 .metrics-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #8b5cf6;
+  color: #0d9488;
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  .status-header h2,
+  .metrics-header h2 {
+    font-size: 1.5rem;
+  }
 }
 
 .status-icon,
 .metrics-icon {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .status-icon,
+  .metrics-icon {
+    font-size: 1.75rem;
+  }
 }
 
 .status-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .status-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 .status-card {
   background: #f8fafc;
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid #14b8a6;
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
+  animation: fadeIn 0.8s ease-out;
+  transition: all 0.3s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-left-color: #10b981;
 }
 
 .status-label {
@@ -91,7 +145,7 @@
 .status-time {
   font-size: 2rem;
   font-weight: 700;
-  color: #6366f1;
+  color: #0d9488;
   margin: 0.5rem 0;
   letter-spacing: 2px;
 }
@@ -121,12 +175,12 @@
 }
 
 .btn-reset:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
 }
 
 .btn-reset:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.95);
 }
 
 /* Cleaning Metrics Section */
@@ -135,21 +189,47 @@
   margin: 2rem auto 2rem;
   background: white;
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .metrics-section {
+    padding: 2rem;
+  }
 }
 
 .metrics-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .metrics-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 .metric-card {
   border-radius: 12px;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1rem;
   text-align: center;
   position: relative;
+  animation: scaleIn 0.6s ease-out;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .metric-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.metric-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .debris-card {
@@ -162,13 +242,14 @@
 
 .area-card {
   background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
-  border: 3px solid #0ea5e9;
+  border: 3px solid #06b6d4;
 }
 
 .metric-icon {
   font-size: 3rem;
   display: block;
   margin-bottom: 1rem;
+  animation: bounce 2s ease-in-out infinite;
 }
 
 .metric-label {
@@ -181,8 +262,9 @@
 .metric-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #0ea5e9;
+  color: #10b981;
   margin: 0.5rem 0 1rem 0;
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .metric-badge {

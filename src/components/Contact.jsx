@@ -27,18 +27,18 @@ export const Contact = () => {
     >
       <div className="relative z-10 w-full max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+        <div className="text-center mb-12 animate-[fadeIn_0.8s_ease-out]">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg animate-[slideInDown_0.6s_ease-out]">
             Get In Touch
           </h2>
-          <p className="text-cyan-50 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-cyan-50 text-lg md:text-xl max-w-2xl mx-auto animate-[slideInUp_0.8s_ease-out]">
             Have questions about our water cleaning solutions? We'd love to hear from you.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl">
+          <div className="bg-white rounded-2xl p-8 shadow-2xl animate-[slideInLeft_0.8s_ease-out]">
             <h3 className="text-2xl font-bold text-blue-600 mb-6">Send us a Message</h3>
             <form className="space-y-5">
               <div>
@@ -87,7 +87,7 @@ export const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:-translate-y-1 shadow-lg"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl"
               >
                 Send Message
               </button>
@@ -103,10 +103,11 @@ export const Contact = () => {
                 href={info.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
+                className="block bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 animate-[slideInRight_0.8s_ease-out]"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-4xl flex-shrink-0">{info.icon}</span>
+                  <span className="text-4xl flex-shrink-0 transition-all duration-300 hover:scale-125 hover:rotate-12">{info.icon}</span>
                   <div>
                     <h4 className="text-lg font-bold text-blue-600 mb-1">
                       {info.title}
@@ -117,14 +118,21 @@ export const Contact = () => {
               </a>
             ))}
 
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            {/* Interactive Map */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg animate-[slideInRight_1.2s_ease-out] overflow-hidden">
               <h4 className="text-lg font-bold text-blue-600 mb-4">Visit Our Office</h4>
-              <div className="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <span className="text-5xl block mb-2">🗺️</span>
-                  <p className="text-gray-600 font-semibold">Interactive Map</p>
-                </div>
+              <div className="w-full h-64 rounded-lg overflow-hidden shadow-inner">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.8949536304934!2d-122.41941492346892!3d37.78825191119828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTransamerica%20Pyramid!5e0!3m2!1sen!2sus!4v1706345678901!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Office Location Map"
+                  className="rounded-lg transition-all duration-300 hover:scale-105"
+                ></iframe>
               </div>
             </div>
 

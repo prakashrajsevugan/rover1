@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 const App = () => {
   return (
     <Router>
+      <div className="animate-[fadeIn_0.3s_ease-out]">
       <Routes>
         {/* Auth routes - without navbar and footer */}
         <Route path="/login" element={<Login />} />
@@ -36,6 +37,7 @@ const App = () => {
           }
         />
       </Routes>
+      </div>
     </Router>
   );
 };

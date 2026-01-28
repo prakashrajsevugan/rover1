@@ -1,51 +1,232 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
-const Navbar = ({ username }) => {
+const Navbar = ({ username: usernameProp }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const [showLogoutMenu, setShowLogoutMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const logoutMenuRef = useRef(null);
+
+  useEffect(() => {
+    // Get username from prop or localStorage
+    const storedUsername = localStorage.getItem('username');
+    if (usernameProp) {
+      setUsername(usernameProp);
+    } else if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, [usernameProp]);
+
+  useEffect(() => {
+    // Handle scroll event
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Close logout menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (logoutMenuRef.current && !logoutMenuRef.current.contains(event.target)) {
+        setShowLogoutMenu(false);
+      }
+    };
+
+    if (showLogoutMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showLogoutMenu]);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('username');
+    setUsername("");
+    setShowLogoutMenu(false);
     navigate('/login');
   };
 
+  const toggleLogoutMenu = () => {
+    setShowLogoutMenu(!showLogoutMenu);
+  };
+
   return (
-    <header className="w-full bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600 shadow-lg sticky top-0 z-50">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-2 text-white">
+    <header className={`w-full shadow-lg sticky top-0 z-50 animate-[slideInDown_0.5s_ease-out] transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-gradient-to-r from-emerald-400/80 via-teal-400/80 to-cyan-400/80 backdrop-blur-md' 
+        : 'bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400'
+    }`}>
+      <nav className="mx-auto flex w-full items-center justify-between px-4 py-3 md:px-6 lg:px-8">
+        <Link to="/" className="flex items-center gap-2 text-white group">
           <img
-            className="h-9 w-9 rounded-xl shadow-md"
+            className="h-9 w-9 rounded-xl shadow-md transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-white/30"
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23386cf9'/%3E%3Cstop offset='100%25' stop-color='%239464f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='url(%23g)'/%3E%3Cpath d='M10 17c2.5-2.8 5-4.2 7.5-4.2 2 0 3.4.9 3.4 2.7 0 1.9-1.4 3.3-3.4 3.3-1.4 0-2.6-.6-3.7-1.8l-.5.5c1.3 1.5 2.9 2.2 4.6 2.2 2.6 0 4.7-1.7 4.7-4.3 0-2.6-2-4.1-4.7-4.1-2.8 0-5.6 1.7-8.2 4.6z' fill='%23fff' fill-opacity='0.9'/%3E%3C/svg%3E"
             alt="AST logo"
           />
-          <span className="text-xl font-bold tracking-wide">AST</span>
+          <span className="text-2xl font-bold tracking-wide transition-all duration-300 group-hover:text-white group-hover:scale-110">AST</span>
         </Link>
 
-        <div className="flex items-center gap-4 text-white">
-          <Link className="rounded-lg px-3 py-2 text-sm font-semibold hover:bg-white/10" to="/start">Home</Link>
-          <Link className="rounded-lg px-3 py-2 text-sm font-semibold hover:bg-white/10" to="/about">About</Link>
-          <Link className="rounded-lg px-3 py-2 text-sm font-semibold hover:bg-white/10" to="/contact">Contact</Link>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6 text-white">
+          <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to={username ? "/home" : "/start"}>
+            <span className="relative z-10">Home</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute inset-0 rounded-lg bg-white/0 transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"></span>
+          </Link>
+          <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to="/about">
+            <span className="relative z-10">About</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute inset-0 rounded-lg bg-white/0 transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"></span>
+          </Link>
+          <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to="/contact">
+            <span className="relative z-10">Contact</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute inset-0 rounded-lg bg-white/0 transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"></span>
+          </Link>
           {username ? (
-            <div className="flex items-center gap-3">
-              <span className="rounded-lg bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
-                👤 {username}
-              </span>
+            <div className="relative" ref={logoutMenuRef}>
               <button
-                onClick={handleLogout}
-                className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                onClick={toggleLogoutMenu}
+                className="rounded-lg bg-white/20 px-4 py-2 text-base font-semibold backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:scale-105 hover:shadow-lg hover:shadow-white/20 cursor-pointer"
               >
-                Logout
+                👤 {username}
               </button>
+              {showLogoutMenu && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50 animate-[scaleIn_0.2s_ease-out]">
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200 flex items-center gap-2"
+                  >
+                    <span>🚪</span>
+                    <span className="font-semibold">Logout</span>
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <Link
               to="/login"
-              className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              className="relative rounded-lg bg-white px-4 py-2 text-base font-semibold text-emerald-600 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-white/30 hover:scale-105 active:scale-95 overflow-hidden group"
             >
-              Sign In / Sign Up
+              <span className="relative z-10">Sign In / Sign Up</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-emerald-50 to-teal-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
             </Link>
           )}
         </div>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden flex flex-col items-center justify-center w-10 h-10 text-white focus:outline-none z-50 relative"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+              isOpen ? "rotate-45 translate-y-1.5" : ""
+            }`}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-white transition-all duration-300 mt-1.5 ${
+              isOpen ? "opacity-0" : ""
+            }`}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-white transition-all duration-300 mt-1.5 ${
+              isOpen ? "-rotate-45 -translate-y-2" : ""
+            }`}
+          ></span>
+        </button>
       </nav>
+
+      {/* Mobile Side Menu */}
+      <div
+        className={`md:hidden fixed top-0 right-0 h-full w-64 shadow-2xl transform transition-transform duration-300 ease-in-out z-40 bg-gradient-to-b from-emerald-500 via-teal-500 to-cyan-500 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full pt-20 px-6">
+          <Link
+            to={username ? "/home" : "/start"}
+            onClick={closeMenu}
+            className="text-white text-lg font-semibold py-4 px-4 rounded-lg hover:bg-white/20 transition-all duration-300 mb-2"
+          >
+            🏠 Home
+          </Link>
+          <Link
+            to="/about"
+            onClick={closeMenu}
+            className="text-white text-lg font-semibold py-4 px-4 rounded-lg hover:bg-white/20 transition-all duration-300 mb-2"
+          >
+            ℹ️ About
+          </Link>
+          <Link
+            to="/contact"
+            onClick={closeMenu}
+            className="text-white text-lg font-semibold py-4 px-4 rounded-lg hover:bg-white/20 transition-all duration-300 mb-2"
+          >
+            📞 Contact
+          </Link>
+          
+          <div className="mt-6 pt-6 border-t border-white/30">
+            {username ? (
+              <div className="space-y-2">
+                <div className="text-white text-lg font-semibold py-4 px-4 rounded-lg bg-white/20">
+                  👤 {username}
+                </div>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    closeMenu();
+                  }}
+                  className="w-full text-white text-lg font-semibold py-4 px-4 rounded-lg bg-red-500/80 hover:bg-red-600 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <span>🚪</span>
+                  <span>Logout</span>
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                onClick={closeMenu}
+                className="block text-center bg-white text-emerald-600 text-lg font-bold py-4 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                Sign In / Sign Up
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          onClick={closeMenu}
+          className="md:hidden fixed inset-0 bg-black/50 z-30 transition-opacity duration-300"
+        ></div>
+      )}
     </header>
   );
 };

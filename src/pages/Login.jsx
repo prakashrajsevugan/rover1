@@ -22,11 +22,20 @@ const Login = () => {
     <section className="relative w-full min-h-screen bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-600 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Login Card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 animate-[scaleIn_0.6s_ease-out]">
+          {/* Home Button */}
+          <Link
+            to="/start"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-cyan-600 font-semibold transition-all duration-300 hover:scale-105 mb-6"
+          >
+            <span className="text-xl">🏠</span>
+            <span>Back to Home</span>
+          </Link>
+
           {/* Logo/Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <span className="text-5xl">🌊</span>
+              <span className="text-5xl animate-[float_3s_ease-in-out_infinite]">🌊</span>
             </div>
             <h1 className="text-3xl font-bold text-blue-600 mb-2">Welcome Back</h1>
             <p className="text-gray-600">Sign in to your AquaClean account</p>
@@ -79,7 +88,7 @@ const Login = () => {
             {/* Login Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:-translate-y-1 shadow-lg"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl"
             >
               Sign In
             </button>

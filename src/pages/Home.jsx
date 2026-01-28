@@ -16,7 +16,7 @@ L.Icon.Default.mergeOptions({
 
 // Custom rover icon
 const roverIcon = new L.Icon({
-  iconUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxOCIgZmlsbD0iIzAwZDRmZiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyMCIgeT0iMjYiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpow8L3RleHQ+PC9zdmc+',
+  iconUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxOCIgZmlsbD0iIzEwYjk4MSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyMCIgeT0iMjYiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpow8L3RleHQ+PC9zdmc+',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
   popupAnchor: [0, -40]
@@ -74,11 +74,32 @@ const Home = () => {
           `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
         );
         
-        // Simulate metrics updates
-        if (totalSecondsRef.current % 10 === 0) {
-          setDebrisCollected(prev => +(prev + 0.5).toFixed(1));
-          setAreaCleaned(prev => prev + 5);
-          setBatteryLevel(prev => Math.max(0, prev - 1));
+        // Update metrics based on running time
+        // Debris Collection: 0.3-0.7 kg every 5 seconds (more variable)
+        if (totalSecondsRef.current % 5 === 0) {
+          const debrisAmount = +(0.3 + Math.random() * 0.4).toFixed(1);
+          setDebrisCollected(prev => +(prev + debrisAmount).toFixed(1));
+        }
+        
+        // Area Cleaned: 3-8 m² every 5 seconds (varies with time)
+        if (totalSecondsRef.current % 5 === 0) {
+          const areaAmount = Math.floor(3 + Math.random() * 6);
+          setAreaCleaned(prev => prev + areaAmount);
+        }
+        
+        // Battery Drain: Depends on running time
+        // Faster drain in first 30 seconds, then stabilizes
+        if (totalSecondsRef.current % 15 === 0) {
+          const drainRate = totalSecondsRef.current < 30 ? 2 : 1;
+          setBatteryLevel(prev => Math.max(0, prev - drainRate));
+        }
+        
+        // Stop cleaning if battery reaches 0
+        if (batteryLevel <= 0) {
+          setIsCleaning(false);
+          const now = new Date();
+          setDeactivatedTime(formatTime(now));
+          alert("⚠️ Battery depleted! Rover stopped automatically.");
         }
       }, 1000);
     } else {
@@ -92,7 +113,7 @@ const Home = () => {
         clearInterval(runningTimerRef.current);
       }
     };
-  }, [isCleaning]);
+  }, [isCleaning, batteryLevel]);
 
   const formatTime = (date) => {
     const hours = String(date.getHours()).padStart(2, '0');
@@ -275,7 +296,7 @@ const Home = () => {
               disabled={isCleaning}
               style={{ opacity: isCleaning ? 0.5 : 1, cursor: isCleaning ? 'not-allowed' : 'pointer' }}
             >
-              🧹 Start Cleaning
+              🧹 Activate
             </button>
             <button 
               className="btn-stop-cleaning"
@@ -283,7 +304,7 @@ const Home = () => {
               disabled={!isCleaning}
               style={{ opacity: !isCleaning ? 0.5 : 1, cursor: !isCleaning ? 'not-allowed' : 'pointer' }}
             >
-              🛑 Stop Cleaning
+              🛑 Deactivate
             </button>
           </div>
 

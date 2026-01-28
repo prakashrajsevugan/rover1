@@ -39,8 +39,8 @@ const About = () => {
     >
       <div className="relative z-10 w-full flex flex-col justify-center items-center">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-blue-600 mb-4 drop-shadow-lg">
+        <div className="text-center mb-16 animate-[fadeIn_0.8s_ease-out]">
+          <h2 className="text-5xl md:text-6xl font-bold text-blue-600 mb-4 drop-shadow-lg animate-[slideInDown_0.6s_ease-out]">
             About AquaClean Rover
           </h2>
         </div>
@@ -50,10 +50,11 @@ const About = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-3 hover:scale-105 backdrop-blur-md bg-white/98 border border-white/20"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 hover:scale-105 backdrop-blur-md bg-white/98 border border-white/20 animate-[scaleIn_0.6s_ease-out]"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-start gap-4">
-                <span className="text-5xl flex-shrink-0 transition duration-300 hover:scale-125">{feature.icon}</span>
+                <span className="text-5xl flex-shrink-0 transition-all duration-300 hover:scale-125 hover:rotate-12 animate-[bounce_2s_ease-in-out_infinite]">{feature.icon}</span>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-blue-600 mb-3 transition duration-300 hover:text-purple-600">
                     {feature.title}
