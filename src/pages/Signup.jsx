@@ -21,7 +21,7 @@ const Signup = () => {
               <span className="text-5xl animate-[float_3s_ease-in-out_infinite]">🌊</span>
             </div>
             <h1 className="text-3xl font-bold text-blue-600 mb-2">Create Account</h1>
-            <p className="text-gray-600">Join AquaClean and start your journey</p>
+            <p className="text-gray-600">Join Albedrozes and start your journey</p>
           </div>
 
           {/* Signup Form */}

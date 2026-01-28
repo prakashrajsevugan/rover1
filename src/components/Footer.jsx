@@ -1,3 +1,6 @@
+import { FaFacebookF,FaLinkedinIn,FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -17,10 +20,10 @@ export const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: "f", label: "Facebook", url: "#" },
-    { icon: "𝕏", label: "Twitter", url: "#" },
-    { icon: "in", label: "LinkedIn", url: "#" },
-    { icon: "📺", label: "YouTube", url: "#" }
+    { icon: FaFacebookF, label: "Facebook", url: "#" },
+    { icon: FaXTwitter, label: "Twitter", url: "#" },
+    { icon: FaLinkedinIn, label: "LinkedIn", url: "#" },
+    { icon: FaYoutube, label: "YouTube", url: "#" }
   ];
 
   return (
@@ -31,24 +34,27 @@ export const Footer = () => {
         <div className="mb-8 animate-[fadeIn_1s_ease-out] text-center sm:text-left">
           <div className="flex items-center gap-2 mb-3 sm:mb-4 justify-center sm:justify-start">
             <span className="text-2xl sm:text-3xl animate-[float_3s_ease-in-out_infinite]">🌊</span>
-            <h3 className="text-xl sm:text-2xl font-bold">AquaClean</h3>
+            <h3 className="text-xl sm:text-2xl font-bold">Albedrozes</h3>
           </div>
           <p className="text-emerald-50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 px-4 sm:px-0 max-w-md mx-auto sm:mx-0">
             Advanced autonomous water cleaning and monitoring solutions for a cleaner planet.
           </p>
           {/* Social Links */}
           <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start">
-            {socialLinks.map((social, index) => (
-              <a
-                key={social.label}
-                href={social.url}
-                aria-label={social.label}
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-12 animate-[scaleIn_0.8s_ease-out]"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <span className="text-base sm:text-lg">{social.icon}</span>
-              </a>
-            ))}
+            {socialLinks.map((social, index) => {
+              const IconComponent = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.url}
+                  aria-label={social.label}
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-12 animate-[scaleIn_0.8s_ease-out]"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <IconComponent className="text-base sm:text-lg" />
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -80,7 +86,7 @@ export const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
           <p className="text-emerald-50 text-xs sm:text-sm text-center md:text-left px-4 sm:px-0">
-            &copy; {currentYear} AquaClean Rover. All rights reserved.
+            &copy; {currentYear} Albedrozes Rover. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <a href="#" className="text-emerald-50 hover:text-white text-xs sm:text-sm transition duration-300">

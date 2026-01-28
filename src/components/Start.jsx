@@ -51,7 +51,7 @@ const Start = () => {
             <span className="text-4xl sm:text-5xl animate-[float_3s_ease-in-out_infinite]">🌊</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2 leading-tight px-2">
-            Welcome to AquaClean
+            Welcome to Albedrozes
           </h1>
           <p className="text-lg sm:text-xl bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent font-semibold mb-2 px-2">
             Water Cleaning Rover System

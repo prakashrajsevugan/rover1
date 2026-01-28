@@ -41,7 +41,7 @@ const About = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-[fadeIn_0.8s_ease-out]">
           <h2 className="text-5xl md:text-6xl font-bold text-blue-600 mb-4 drop-shadow-lg animate-[slideInDown_0.6s_ease-out]">
-            About AquaClean Rover
+            About Albedrozes Rover
           </h2>
         </div>
 

@@ -3,19 +3,19 @@ export const Contact = () => {
     {
       icon: "📧",
       title: "Email",
-      detail: "support@aquaclean.com",
-      link: "mailto:support@aquaclean.com"
+      detail: "support@albedrozes.com",
+      link: "mailto:support@albedrozes.com"
     },
     {
       icon: "📱",
       title: "Phone",
-      detail: "+1 (555) 123-4567",
+      detail: "+91 96843 34356",
       link: "tel:+15551234567"
     },
     {
       icon: "📍",
       title: "Address",
-      detail: "123 Water Street, San Francisco, CA 94102",
+      detail: "Kannampalayam,Coimbatore - 641 402,Tamil Nadu, India. ",
       link: "https://maps.google.com"
     }
   ];
@@ -123,7 +123,7 @@ export const Contact = () => {
               <h4 className="text-lg font-bold text-blue-600 mb-4">Visit Our Office</h4>
               <div className="w-full h-64 rounded-lg overflow-hidden shadow-inner">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.8949536304934!2d-122.41941492346892!3d37.78825191119828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTransamerica%20Pyramid!5e0!3m2!1sen!2sus!4v1706345678901!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d846.0891087746388!2d77.08184568329413!3d10.999352566748877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba856be6170b317%3A0x38b41cc57543ac84!2sPallapalayam%2C%20Kannampalayam%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1769606177024!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
