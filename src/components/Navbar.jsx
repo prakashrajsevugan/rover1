@@ -163,9 +163,14 @@ const Navbar = ({ username: usernameProp }) => {
 
       {/* Mobile Side Menu */}
       <div
-        className={`md:hidden fixed top-0 right-0 h-full w-64 shadow-2xl transform transition-transform duration-300 ease-in-out z-40 bg-gradient-to-b from-emerald-500 via-teal-500 to-cyan-500 ${
+        className={`md:hidden fixed top-0 right-0 h-full w-64 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{
+          background: 'linear-gradient(180deg, #10b981 0%, #14b8a6 50%, #06b6d4 100%)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)'
+        }}
       >
         <div className="flex flex-col h-full pt-20 px-6">
           <Link
@@ -224,7 +229,7 @@ const Navbar = ({ username: usernameProp }) => {
       {isOpen && (
         <div
           onClick={closeMenu}
-          className="md:hidden fixed inset-0 bg-black/50 z-30 transition-opacity duration-300"
+          className="md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 animate-[fadeIn_0.3s_ease-out]"
         ></div>
       )}
     </header>

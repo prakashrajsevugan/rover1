@@ -1,5 +1,40 @@
 @import "tailwindcss";
 
+/* Global Base Styles */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Improved touch targets for mobile */
+button, a, input, textarea, select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Prevent double-tap zoom on iOS */
+button, a {
+  touch-action: manipulation;
+}
+
+/* Mobile sidebar - ensure solid background */
+@media (max-width: 767px) {
+  nav + div[class*="fixed"] {
+    background: linear-gradient(180deg, #10b981 0%, #14b8a6 50%, #06b6d4 100%) !important;
+    opacity: 1 !important;
+  }
+}
+
 /* Global Keyframe Animations */
 @keyframes fadeIn {
   from {
@@ -228,21 +263,50 @@
 
 .monitoring-panel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   max-width: 1400px;
   margin: 0 auto;
   animation: fadeIn 1s ease-out;
 }
 
+@media (min-width: 768px) {
+  .monitoring-panel {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .monitoring-panel {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
 .location-section,
 .camera-section {
   background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
+  border-radius: 12px;
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: scaleIn 0.8s ease-out;
   transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .location-section,
+  .camera-section {
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .location-section,
+  .camera-section {
+    padding: 1.5rem;
+  }
 }
 
 .location-section:hover,
@@ -258,14 +322,28 @@
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #e5e7eb;
+  flex-wrap: wrap;
 }
 
 .section-header h3 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #0d9488;
   margin: 0;
   flex: 1;
+  min-width: 150px;
+}
+
+@media (min-width: 640px) {
+  .section-header h3 {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-header h3 {
+    font-size: 1.25rem;
+  }
 }
 
 .pin-icon,
@@ -325,12 +403,34 @@
 .camera-container {
   background: #f3f4f6;
   border-radius: 12px;
-  height: 400px;
+  height: 250px;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  touch-action: manipulation;
+}
+
+@media (min-width: 640px) {
+  .map-container,
+  .camera-container {
+    height: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .map-container,
+  .camera-container {
+    height: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .map-container,
+  .camera-container {
+    height: 400px;
+  }
 }
 
 .map-container .leaflet-container {
@@ -351,13 +451,33 @@
 }
 
 .camera-icon-large {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .camera-icon-large {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .camera-placeholder p {
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   margin: 0;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .camera-placeholder p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .camera-placeholder p {
+    font-size: 1.125rem;
+  }
 }
 
 .location-controls,
@@ -381,14 +501,62 @@
   .rover-controls {
     flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
   }
   
   .rover-id-input {
     width: 100%;
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.875rem;
   }
   
   .btn-start-cleaning,
   .btn-stop-cleaning {
     width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .location-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .location-input {
+    width: 100%;
+    min-width: unset;
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.875rem;
+  }
+  
+  .btn-update {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+  
+  .camera-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-start,
+  .btn-stop,
+  .btn-snapshot {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+  
+  .map-container,
+  .camera-container {
+    height: 300px;
+  }
+  
+  .section-header h3 {
+    font-size: 1.125rem;
+  }
+  
+  .location-section,
+  .camera-section {
+    padding: 1rem;
   }
 }

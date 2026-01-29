@@ -23,31 +23,31 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative w-full min-h-screen bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-600 py-16 px-4"
+      className="relative w-full min-h-screen bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-600 py-12 sm:py-16 px-4 sm:px-6"
     >
       <div className="relative z-10 w-full max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 animate-[fadeIn_0.8s_ease-out]">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg animate-[slideInDown_0.6s_ease-out]">
+        <div className="text-center mb-8 sm:mb-12 animate-[fadeIn_0.8s_ease-out] px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg animate-[slideInDown_0.6s_ease-out] leading-tight">
             Get In Touch
           </h2>
-          <p className="text-cyan-50 text-lg md:text-xl max-w-2xl mx-auto animate-[slideInUp_0.8s_ease-out]">
+          <p className="text-cyan-50 text-base sm:text-lg md:text-xl max-w-2xl mx-auto animate-[slideInUp_0.8s_ease-out] leading-relaxed">
             Have questions about our water cleaning solutions? We'd love to hear from you.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl animate-[slideInLeft_0.8s_ease-out]">
-            <h3 className="text-2xl font-bold text-blue-600 mb-6">Send us a Message</h3>
-            <form className="space-y-5">
+          <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl animate-[slideInLeft_0.8s_ease-out]">
+            <h3 className="text-xl sm:text-2xl font-bold text-blue-600 mb-5 sm:mb-6">Send us a Message</h3>
+            <form className="space-y-4 sm:space-y-5">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Full Name
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 sm:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition text-base touch-manipulation"
                   placeholder="John Doe"
                 />
               </div>
@@ -58,7 +58,7 @@ export const Contact = () => {
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 sm:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition text-base touch-manipulation"
                   placeholder="john@example.com"
                 />
               </div>
@@ -69,7 +69,7 @@ export const Contact = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 sm:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition text-base touch-manipulation"
                   placeholder="How can we help?"
                 />
               </div>
@@ -80,14 +80,14 @@ export const Contact = () => {
                 </label>
                 <textarea
                   rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition resize-none"
+                  className="w-full px-4 py-3 sm:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition resize-none text-base touch-manipulation"
                   placeholder="Tell us more about your inquiry..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3.5 sm:py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl touch-manipulation"
               >
                 Send Message
               </button>
@@ -95,7 +95,7 @@ export const Contact = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
             {/* Info Cards */}
             {contactInfo.map((info, index) => (
               <a
@@ -103,25 +103,25 @@ export const Contact = () => {
                 href={info.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 animate-[slideInRight_0.8s_ease-out]"
+                className="block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 animate-[slideInRight_0.8s_ease-out] touch-manipulation"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="flex items-start gap-4">
-                  <span className="text-4xl flex-shrink-0 transition-all duration-300 hover:scale-125 hover:rotate-12">{info.icon}</span>
-                  <div>
-                    <h4 className="text-lg font-bold text-blue-600 mb-1">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <span className="text-3xl sm:text-4xl flex-shrink-0 transition-all duration-300 hover:scale-125 hover:rotate-12">{info.icon}</span>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-base sm:text-lg font-bold text-blue-600 mb-1">
                       {info.title}
                     </h4>
-                    <p className="text-gray-700">{info.detail}</p>
+                    <p className="text-sm sm:text-base text-gray-700 break-words">{info.detail}</p>
                   </div>
                 </div>
               </a>
             ))}
 
             {/* Interactive Map */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg animate-[slideInRight_1.2s_ease-out] overflow-hidden">
-              <h4 className="text-lg font-bold text-blue-600 mb-4">Visit Our Office</h4>
-              <div className="w-full h-64 rounded-lg overflow-hidden shadow-inner">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-lg animate-[slideInRight_1.2s_ease-out] overflow-hidden">
+              <h4 className="text-base sm:text-lg font-bold text-blue-600 mb-3 sm:mb-4">Visit Our Office</h4>
+              <div className="w-full h-56 sm:h-64 rounded-lg overflow-hidden shadow-inner">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d846.0891087746388!2d77.08184568329413!3d10.999352566748877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba856be6170b317%3A0x38b41cc57543ac84!2sPallapalayam%2C%20Kannampalayam%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1769606177024!5m2!1sen!2sin"
                   width="100%"
