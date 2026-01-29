@@ -169,6 +169,43 @@ const Home = () => {
     }
   };
 
+  const handleGetCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          setMapCenter([lat, lon]);
+          setRoverPosition([lat, lon]);
+          alert(`Location updated to your current position: ${lat.toFixed(4)}, ${lon.toFixed(4)}`);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              alert("Location permission denied. Please allow location access in your browser settings.");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable.");
+              break;
+            case error.TIMEOUT:
+              alert("Location request timed out.");
+              break;
+            default:
+              alert("An error occurred while getting your location.");
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  };
+
   const handleCameraStart = async () => {
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ 
@@ -315,18 +352,33 @@ const Home = () => {
                   <span className="pin-icon">📍</span>
                   <h3>Location Map</h3>
                 </div>
-                <div style={{ 
-                  backgroundColor: '#10b981', 
-                  color: 'white', 
-                  padding: '6px 16px', 
-                  borderRadius: '20px',
-                  fontWeight: 'bold',
-                  fontSize: '13px',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px'
-                }}>
+                <div 
+                  onClick={handleGetCurrentLocation}
+                  style={{ 
+                    backgroundColor: '#10b981', 
+                    color: 'white', 
+                    padding: '6px 16px', 
+                    borderRadius: '20px',
+                    fontWeight: 'bold',
+                    fontSize: '13px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    userSelect: 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#059669';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#10b981';
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                  title="Click to use your device's current location"
+                >
                   <span>📍</span> Current Location
                 </div>
               </div>
