@@ -38,17 +38,34 @@ const Start = () => {
           </p>
         </div>
 
-        <div className="w-full bg-white rounded-2xl sm:rounded-3xl shadow-inner p-4 sm:p-6 mb-8 sm:mb-10 border-2 border-dashed border-teal-200 animate-[fadeIn_1s_ease-out]">
-          <div className="flex items-center justify-center mb-4">
+        <div className="w-full bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden mb-8 sm:mb-10 border border-teal-200 animate-[fadeIn_1s_ease-out] hover:shadow-2xl transition-all duration-300">
+          <div className="relative overflow-hidden bg-white p-6 sm:p-8">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 pointer-events-none"></div>
             <img 
               src="/images/rover2.jpeg" 
-              alt="Water Cleaning Rover" 
-              className="w-full h-auto max-w-full object-contain rounded-lg"
+              alt="Albedrozes Surface Rover - Advanced Water Cleaning System" 
+              className="w-full h-auto max-w-full object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 relative z-10"
             />
           </div>
-          <h2 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-            Surface Rover
-          </h2>
+          <div className="p-5 sm:p-6 bg-white">
+            <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-3">
+              Surface Rover
+            </h2>
+            <p className="text-center text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed px-2 mb-3">
+              Our flagship autonomous water cleaning rover, equipped with intelligent debris collection, real-time GPS tracking, and advanced water purification technology.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-emerald-100 text-emerald-700">
+                🤖 Autonomous
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-teal-100 text-teal-700">
+                🔋 12hr Battery
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-cyan-100 text-cyan-700">
+                📍 GPS Enabled
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* CTA Button */}
@@ -59,12 +76,35 @@ const Start = () => {
           Sign In
         </button>
       </div>
-
-      {/* <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 md:p-12 mb-8 sm:mb-12 animate-[scaleIn_0.6s_ease-out]">
-        <div>
-          <img src="/images/rover2.jpeg" alt="" />
+{/* 
+      <div className="w-full max-w-2xl mx-auto bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden mb-8 sm:mb-12 border border-teal-200 animate-[scaleIn_0.8s_ease-out] hover:shadow-2xl transition-all duration-300" style={{ animationDelay: '0.2s' }}>
+        <div className="relative overflow-hidden bg-white p-6 sm:p-8">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-rose-400/10 to-orange-400/10 pointer-events-none"></div>
+          <img 
+            src="/images/rover2.jpeg" 
+            alt="Albedrozes Advanced Water Rover - Dual Tank System" 
+            className="w-full h-auto max-w-full object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 relative z-10"
+          />
         </div>
-
+        <div className="p-5 sm:p-6 bg-white">
+          <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text text-transparent mb-3">
+            Dual Collection System
+          </h2>
+          <p className="text-center text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed px-2 mb-3">
+            Features dual floating tanks for enhanced stability and increased debris storage capacity. Perfect for large-scale water body cleaning operations with extended deployment times.
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-rose-100 text-rose-700">
+              🗑️ 50L Capacity
+            </span>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-orange-100 text-orange-700">
+              ⚖️ Balanced Design
+            </span>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-amber-100 text-amber-700">
+              🔄 Auto-Deploy
+            </span>
+          </div>
+        </div>
       </div> */}
     </div>
   );
