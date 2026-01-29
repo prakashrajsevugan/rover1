@@ -274,6 +274,13 @@ const Home = () => {
     };
   }, [stream]);
 
+  // Sync stream with video element
+  useEffect(() => {
+    if (stream && videoRef.current) {
+      videoRef.current.srcObject = stream;
+    }
+  }, [stream]);
+
   const getBatteryBadge = () => {
     if (batteryLevel > 60) return { class: "good", text: "Good" };
     if (batteryLevel > 30) return { class: "ready", text: "Medium" };
