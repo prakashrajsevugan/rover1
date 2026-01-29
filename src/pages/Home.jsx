@@ -525,7 +525,7 @@ const Home = () => {
               <div className="metric-card debris-card">
                 <span className="metric-icon">🗑️</span>
                 <p className="metric-label">Debris Collected</p>
-                <p className="metric-value">{debrisCollected} kg</p>
+                <p className="metric-value">2 kg</p>
                 <span className={`metric-badge ${isCleaning ? 'good' : 'ready'}`}>
                   {isCleaning ? 'Collecting' : 'Ready'}
                 </span>
@@ -533,7 +533,7 @@ const Home = () => {
               <div className="metric-card battery-card">
                 <span className="metric-icon">🔋</span>
                 <p className="metric-label">Battery Level</p>
-                <p className="metric-value">{batteryLevel}%</p>
+                <p className="metric-value">85%</p>
                 <span className={`metric-badge ${batteryBadge.class}`}>
                   {batteryBadge.text}
                 </span>
@@ -541,7 +541,7 @@ const Home = () => {
               <div className="metric-card area-card">
                 <span className="metric-icon">🌊</span>
                 <p className="metric-label">Area Cleaned</p>
-                <p className="metric-value">{areaCleaned} m²</p>
+                <p className="metric-value">10 m²</p>
                 <span className={`metric-badge ${isCleaning ? 'good' : 'standby'}`}>
                   {isCleaning ? 'Active' : 'Standby'}
                 </span>

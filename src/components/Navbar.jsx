@@ -85,7 +85,6 @@ const Navbar = ({ username: usernameProp }) => {
             src="/images/logo.png"
             alt="AST logo"
           />
-          <span className="text-2xl font-bold tracking-wide transition-all duration-300 group-hover:text-white group-hover:scale-110">AST</span>
         </Link>
 
         {/* Desktop Navigation */}

@@ -59,10 +59,10 @@ const Start = () => {
                 🤖 Autonomous
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-teal-100 text-teal-700">
-                🔋 12hr Battery
+                🐢 Amphibious
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-cyan-100 text-cyan-700">
-                📍 GPS Enabled
+                📍 Live Tracking
               </span>
             </div>
           </div>
