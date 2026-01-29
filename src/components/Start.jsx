@@ -61,21 +61,17 @@ const Start = () => {
           </p>
         </div>
 
-        {/* Features */}
-        <div className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-emerald-50 to-teal-50 p-3 sm:p-4 rounded-lg sm:rounded-xl border-l-4 border-emerald-400 hover:shadow-lg hover:border-teal-400 hover:scale-[1.02] sm:hover:scale-105 transition-all duration-300 animate-[slideInLeft_0.5s_ease-out] cursor-pointer touch-manipulation"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <span className="text-3xl sm:text-4xl flex-shrink-0" role="img" aria-label={feature.title}>{feature.icon}</span>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-semibold text-gray-800 text-sm sm:text-base leading-snug">{feature.title}</h3>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{feature.description}</p>
-              </div>
-            </div>
-          ))}
+        <div className="w-full bg-white rounded-2xl sm:rounded-3xl shadow-inner p-4 sm:p-6 mb-8 sm:mb-10 border-2 border-dashed border-teal-200 animate-[fadeIn_1s_ease-out]">
+          <div className="flex items-center justify-center mb-4">
+            <img 
+              src="/images/rover1.jpeg" 
+              alt="Water Cleaning Rover" 
+              className="w-full h-auto max-w-full object-contain rounded-lg"
+            />
+          </div>
+          <h2 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
+            Surface Rover
+          </h2>
         </div>
 
         {/* CTA Button */}
@@ -87,36 +83,7 @@ const Start = () => {
         </button>
       </div>
 
-      {/* Rover Gallery Section */}
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 pb-8 sm:pb-12">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white mb-2 sm:mb-3 drop-shadow-lg animate-[fadeIn_1s_ease-out] px-4 leading-tight">
-          Our Surface Rover Fleet
-        </h2>
-        <p className="text-center text-white/90 text-sm sm:text-base md:text-lg mb-6 sm:mb-10 drop-shadow animate-[fadeIn_1.2s_ease-out] px-6 leading-relaxed">
-          Meet our advanced surface water cleaning rovers designed for every aquatic environment
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {rovers.map((rover, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:-translate-y-2 hover:rotate-1 transition-all duration-300 animate-[slideInUp_0.6s_ease-out] cursor-pointer touch-manipulation"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <div className="h-44 sm:h-48 overflow-hidden">
-                <img
-                  src={rover.image}
-                  alt={rover.title}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-4 sm:p-5">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 mb-2 leading-snug">{rover.title}</h3>
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{rover.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      
     </div>
   );
 };

@@ -310,9 +310,25 @@ const Home = () => {
 
           <div className="monitoring-panel">
             <div className="location-section">
-              <div className="section-header">
-                <span className="pin-icon">📍</span>
-                <h3>Location Map</h3>
+              <div className="section-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="pin-icon">📍</span>
+                  <h3>Location Map</h3>
+                </div>
+                <div style={{ 
+                  backgroundColor: '#10b981', 
+                  color: 'white', 
+                  padding: '6px 16px', 
+                  borderRadius: '20px',
+                  fontWeight: 'bold',
+                  fontSize: '13px',
+                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <span>📍</span> Current Location
+                </div>
               </div>
               <div className="map-container">
                 <MapContainer 
