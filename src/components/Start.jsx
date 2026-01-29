@@ -19,29 +19,6 @@ const Start = () => {
     }
   ];
 
-  const rovers = [
-    {
-      image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=400&h=300&fit=crop",
-      title: "AquaBot-X1",
-      description: "Surface water cleaning specialist with advanced debris collection"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1561144257-e32e6d3c4e8f?w=400&h=300&fit=crop",
-      title: "OceanRover Pro",
-      description: "High-capacity surface debris collection for large water bodies"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
-      title: "WaterGuard-S2",
-      description: "Solar-powered surface cleaning with 12-hour runtime"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1563089145-599997674d42?w=400&h=300&fit=crop",
-      title: "TidalClean Elite",
-      description: "AI-powered surface navigation for complex aquatic environments"
-    }
-  ];
-
   return (
     <div id="start" className="min-h-screen bg-gradient-to-br from-emerald-300 via-teal-300 to-cyan-300 py-6 sm:py-12 px-3 sm:px-4 touch-manipulation">
       <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 md:p-12 mb-8 sm:mb-12 animate-[scaleIn_0.6s_ease-out]">
@@ -64,7 +41,7 @@ const Start = () => {
         <div className="w-full bg-white rounded-2xl sm:rounded-3xl shadow-inner p-4 sm:p-6 mb-8 sm:mb-10 border-2 border-dashed border-teal-200 animate-[fadeIn_1s_ease-out]">
           <div className="flex items-center justify-center mb-4">
             <img 
-              src="/images/rover1.jpeg" 
+              src="/images/rover2.jpeg" 
               alt="Water Cleaning Rover" 
               className="w-full h-auto max-w-full object-contain rounded-lg"
             />
@@ -83,7 +60,12 @@ const Start = () => {
         </button>
       </div>
 
-      
+      {/* <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 md:p-12 mb-8 sm:mb-12 animate-[scaleIn_0.6s_ease-out]">
+        <div>
+          <img src="/images/rover2.jpeg" alt="" />
+        </div>
+
+      </div> */}
     </div>
   );
 };
